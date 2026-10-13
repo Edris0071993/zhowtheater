@@ -51,7 +51,7 @@ function About() {
 
         <div className="aboutHero__index" aria-hidden="true">
           <span>ABOUT</span>
-          <span>ZHOU THEATRE</span>
+          <span>ZHOW THEATRE</span>
         </div>
         <div className="aboutHero__line" aria-hidden="true" />
       </section>
