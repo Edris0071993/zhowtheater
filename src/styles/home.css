@@ -1,0 +1,329 @@
+:root {
+  /* فعلاً یک تم سرد و شیک؛ بعداً با رنگ‌بندی دقیق شما هماهنگ می‌کنم */
+  --bg: #070a10;
+  --fg: #eef3ff;
+
+  --cold-1: #0b1220;
+  --cold-2: #0e1a2d;
+  --cold-3: #11233c;
+
+  --muted: rgba(238, 243, 255, 0.72);
+  --line: rgba(238, 243, 255, 0.14);
+
+  --accent: #7aa7ff;
+  --accent2: #7bf0ff;
+
+  --radius: 22px;
+}
+
+html {
+  scroll-behavior: smooth; /* اسکرول نرم */
+}
+
+.home {
+  background: var(--bg);
+  color: var(--fg);
+}
+
+/* ---------------------------
+  HERO (عکس تمام صفحه)
+--------------------------- */
+.hero {
+  position: relative;
+  min-height: 100svh; /* بهتر از vh روی موبایل */
+  width: 100%;
+  overflow: hidden;
+}
+
+.hero__img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* عکس کل صفحه را پر می‌کند و ریسپانسیو است */
+  object-position: center;
+  transform: scale(1.02);
+}
+
+.hero__overlay {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(900px 500px at 70% 20%, rgba(122, 167, 255, 0.22), transparent 55%),
+    linear-gradient(to bottom, rgba(0,0,0,0.25), rgba(0,0,0,0.75));
+}
+
+.hero__content {
+  position: relative;
+  z-index: 2;
+
+  min-height: 100svh;
+  width: min(1100px, calc(100% - 32px));
+  margin: 0 auto;
+
+  display: grid;
+  align-content: center;
+  gap: 14px;
+
+  padding: 90px 0 40px;
+  text-align: right;
+}
+
+.hero__title {
+ color: rgba(245, 248, 255, 0.95); /* سفیدِ ملایم */
+  display: inline-block;
+
+  /* نرم ظاهر شدن */
+  opacity: 0;
+  transform: translateY(10px);
+  animation: heroBrandIn 900ms cubic-bezier(.2,.8,.2,1) forwards;
+  animation-delay: 120ms;
+
+  /* درخشش خیلی لطیف (اختیاری) */
+  text-shadow: 0 12px 28px rgba(120, 170, 255, 0.12);
+}
+
+@keyframes heroBrandIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+
+}
+
+.hero__subtitle {
+  max-width: 55ch;
+  color: var(--muted);
+  line-height: 1.9;
+  font-size: clamp(14px, 2.2vw, 18px);
+}
+
+.hero__cta {
+  width: fit-content;
+  margin-top: 8px;
+  text-decoration: none;
+
+  color: var(--fg);
+  border: 1px solid var(--line);
+  background: rgba(255, 255, 255, 0.06);
+
+  padding: 12px 16px;
+  border-radius: 999px;
+
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+
+  transition: transform 200ms ease, background 200ms ease, border-color 200ms ease;
+}
+
+.hero__cta:hover {
+  transform: translateY(-1px);
+  background: rgba(255, 255, 255, 0.09);
+  border-color: rgba(238, 243, 255, 0.28);
+}
+
+/* ---------------------------
+  SECTIONS (نمایش نرم روی اسکرول)
+--------------------------- */
+.section {
+  width: min(1100px, calc(100% - 32px));
+  margin: 0 auto;
+  padding: 72px 0;
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity 700ms ease, transform 700ms ease;
+}
+
+.section.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.section__title {
+  font-size: clamp(22px, 3.2vw, 34px);
+  margin-bottom: 10px;
+}
+
+.section__desc {
+  color: var(--muted);
+  line-height: 1.9;
+}
+
+.section__head {
+  margin-bottom: 22px;
+}
+
+/* ---------------------------
+  PLAY (معرفی نمایشنامه - تم سرد)
+--------------------------- */
+.play__grid {
+  display: grid;
+  grid-template-columns: 1.35fr 0.65fr;
+  gap: 22px;
+  align-items: start;
+}
+
+.play__text {
+  background: linear-gradient(180deg, rgba(14, 26, 45, 0.9), rgba(11, 18, 32, 0.9));
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 22px;
+}
+
+.play__name {
+  margin-top: 6px;
+  margin-bottom: 14px;
+  color: rgba(238, 243, 255, 0.92);
+  font-size: 18px;
+}
+
+.play__p {
+  color: var(--muted);
+  line-height: 2;
+  margin-bottom: 14px;
+}
+
+.play__meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.chip {
+  font-size: 12px;
+  padding: 8px 10px;
+  border-radius: 999px;
+  border: 1px solid rgba(122, 167, 255, 0.25);
+  background: rgba(122, 167, 255, 0.07);
+  color: rgba(238, 243, 255, 0.9);
+}
+
+.play__media {
+  margin: 0;
+  background: linear-gradient(180deg, rgba(17, 35, 60, 0.7), rgba(7, 10, 16, 0.7));
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 12px;
+  position: sticky;
+  top: 92px; /* زیر دکمه منو بهتر می‌ایستد */
+}
+
+.play__img {
+  width: 100%;
+  height: 340px;
+  object-fit: cover;
+  border-radius: 16px;
+  display: block;
+}
+
+.play__cap {
+  margin-top: 10px;
+  font-size: 12px;
+  color: rgba(238, 243, 255, 0.68);
+}
+
+/* ---------------------------
+  NEWS (تازه‌ها - 4 دایره ریسپانسیو)
+  دسکتاپ: 4 ستون
+  تبلت: 2 ستون
+  موبایل: 1 ستون
+--------------------------- */
+.newsGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 18px;
+}
+
+.newsCard {
+  text-decoration: none;
+  color: var(--fg);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 16px;
+
+  background: rgba(255, 255, 255, 0.03);
+  transition: transform 200ms ease, background 200ms ease, border-color 200ms ease;
+}
+
+.newsCard:hover {
+  transform: translateY(-2px);
+  background: rgba(255, 255, 255, 0.06);
+  border-color: rgba(238, 243, 255, 0.28);
+}
+
+.newsCard__circle {
+  width: 100%;
+  aspect-ratio: 1 / 1; /* همیشه دایره می‌ماند */
+  border-radius: 999px;
+
+  display: grid;
+  place-items: center;
+
+  background:
+    radial-gradient(circle at 30% 30%, rgba(123, 240, 255, 0.22), transparent 50%),
+    radial-gradient(circle at 70% 60%, rgba(122, 167, 255, 0.22), transparent 55%),
+    rgba(10, 14, 22, 0.6);
+
+  border: 1px solid rgba(255, 255, 255, 0.14);
+}
+
+.newsCard__tag {
+  font-size: 13px;
+  color: rgba(238, 243, 255, 0.85);
+  padding: 8px 12px;
+  border-radius: 999px;
+  border: 1px solid rgba(238, 243, 255, 0.14);
+  background: rgba(0, 0, 0, 0.25);
+}
+
+.newsCard__txt {
+  margin-top: 12px;
+  display: grid;
+  gap: 6px;
+}
+
+.newsCard__txt h3 {
+  font-size: 16px;
+  margin: 0;
+}
+
+.newsCard__txt p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+/* ---------- Responsive Breakpoints ---------- */
+
+/* تبلت: 2 ستون */
+@media (max-width: 900px) {
+  .play__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .play__media {
+    position: relative;
+    top: auto;
+  }
+
+  .newsGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* موبایل: 1 ستون */
+@media (max-width: 520px) {
+  .section {
+    padding: 56px 0;
+  }
+
+  .hero__content {
+    padding: 86px 0 34px;
+  }
+
+  .newsGrid {
+    grid-template-columns: 1fr;
+  }
+}

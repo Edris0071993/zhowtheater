@@ -1,0 +1,296 @@
+/* =========================================
+   Future Projects — Flip Cards
+   ========================================= */
+
+:root {
+  --fp-fg: rgba(245, 248, 255, 0.92);
+  --fp-muted: rgba(245, 248, 255, 0.68);
+  --fp-line: rgba(255, 255, 255, 0.14);
+  --fp-glass: rgba(255, 255, 255, 0.06);
+  --fp-glass2: rgba(255, 255, 255, 0.04);
+  --fp-accent: rgba(155, 183, 255, 0.95);
+}
+
+/* ---- صفحه ---- */
+.futurePage {
+  position: relative;
+  min-height: 100svh;
+  color: var(--fp-fg);
+  padding: 72px 0 56px;
+  overflow: hidden;
+}
+
+.futureBg {
+  position: absolute;
+  inset: -30px;
+  background-size: cover;
+  background-position: center;
+  filter: blur(14px) saturate(1.05) contrast(1.02);
+  transform: scale(1.06);
+  opacity: 0.85;
+  z-index: 0;
+}
+
+.futureBgOverlay {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background:
+    radial-gradient(900px 520px at 70% 10%, rgba(140, 180, 255, 0.14), transparent 60%),
+    linear-gradient(180deg, rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0.82));
+}
+
+.futureWrap {
+  position: relative;
+  z-index: 1;
+  width: min(1100px, calc(100% - 32px));
+  margin: 0 auto;
+}
+
+.futureHead {
+  text-align: right;
+  margin-bottom: 32px;
+}
+
+.futureTitle {
+  margin: 0 0 10px;
+  font-size: clamp(26px, 3.4vw, 44px);
+  letter-spacing: -0.6px;
+}
+
+.futureSub {
+  margin: 0;
+  color: var(--fp-muted);
+  line-height: 1.9;
+}
+
+/* ---- Grid ---- */
+.futureGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 18px;
+}
+
+/* =========================================
+   FLIP CARD
+   ========================================= */
+
+.flipCard {
+  height: 340px;
+  border-radius: 18px;
+  cursor: pointer;
+  perspective: 1100px;
+  outline: none;
+}
+
+.flipCard:focus-visible {
+  box-shadow: 0 0 0 3px rgba(155, 183, 255, 0.3);
+  border-radius: 18px;
+}
+
+/* ---- Inner (چرخش اصلی) ---- */
+.flipInner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border-radius: 18px;
+
+  transition: transform 0.6s cubic-bezier(0.4, 0.0, 0.2, 1),
+              box-shadow 0.3s ease;
+
+  transform-style: preserve-3d;
+}
+
+/* هاور: برجسته شدن */
+.flipCard:hover .flipInner {
+  transform: translateY(-6px);
+  box-shadow:
+    0 12px 32px rgba(0, 0, 0, 0.35),
+    0 0 0 1px rgba(255, 255, 255, 0.08);
+}
+
+/* کلیک: چرخش ۱۸۰ درجه */
+.flipCard.is-flipped .flipInner {
+  transform: rotateY(180deg);
+}
+
+/* هاور روی کارت چرخیده */
+.flipCard.is-flipped:hover .flipInner {
+  transform: rotateY(180deg) translateY(-6px);
+  box-shadow:
+    0 12px 32px rgba(0, 0, 0, 0.35),
+    0 0 0 1px rgba(255, 255, 255, 0.08);
+}
+
+/* ---- وجه مشترک جلو و پشت ---- */
+.flipFront,
+.flipBack {
+  position: absolute;
+  inset: 0;
+  border-radius: 18px;
+  overflow: hidden;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+/* =========================================
+   FRONT (عکس)
+   ========================================= */
+
+.flipFront {
+  z-index: 2;
+}
+
+.flipFront__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.4s ease;
+}
+
+.flipCard:hover .flipFront__img {
+  transform: scale(1.05);
+}
+
+.flipFront__overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    0deg,
+    rgba(0, 0, 0, 0.7) 0%,
+    rgba(0, 0, 0, 0.15) 50%,
+    transparent 100%
+  );
+}
+
+.flipFront__label {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  padding: 18px 16px;
+  text-align: right;
+}
+
+.flipFront__title {
+  margin: 0 0 4px;
+  font-size: 17px;
+  font-weight: 700;
+  color: #fff;
+}
+
+.flipFront__hint {
+  font-size: 11px;
+  color: rgba(255, 255, 255, 0.55);
+  letter-spacing: 0.3px;
+}
+
+/* =========================================
+   BACK (جزئیات)
+   ========================================= */
+
+.flipBack {
+  z-index: 1;
+  transform: rotateY(180deg);
+
+  background: rgba(12, 14, 20, 0.92);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 22px 18px;
+  text-align: right;
+}
+
+.flipBack__title {
+  margin: 0 0 14px;
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--fp-accent);
+}
+
+.flipBack__info {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.flipBack__info li {
+  display: flex;
+  gap: 6px;
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+.flipBack__label {
+  font-weight: 600;
+  color: var(--fp-accent);
+  white-space: nowrap;
+}
+
+.flipBack__summary {
+  margin: 0;
+  font-size: 12.5px;
+  line-height: 1.85;
+  color: var(--fp-muted);
+}
+
+.flipBack__summary p {
+  margin: 4px 0 0;
+}
+
+.flipBack__hint {
+  margin-top: auto;
+  padding-top: 10px;
+  font-size: 10.5px;
+  color: rgba(255, 255, 255, 0.35);
+  text-align: center;
+}
+
+/* =========================================
+   RESPONSIVE
+   ========================================= */
+
+@media (max-width: 960px) {
+  .futureGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .flipCard {
+    height: 320px;
+  }
+}
+
+@media (max-width: 520px) {
+  .futureGrid {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+
+  .flipCard {
+    height: 300px;
+  }
+
+  .futurePage {
+    padding: 56px 0 40px;
+  }
+
+  .futureHead {
+    margin-bottom: 24px;
+  }
+
+  .flipBack {
+    padding: 18px 14px;
+  }
+
+  .flipBack__summary {
+    font-size: 12px;
+  }
+}
