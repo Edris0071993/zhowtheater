@@ -1,0 +1,526 @@
+.aboutPage {
+  --about-bg: #070a10;
+  --about-panel: #0b111c;
+  --about-text: #eef3ff;
+  --about-muted: rgba(226, 233, 247, 0.68);
+  --about-line: rgba(226, 233, 247, 0.13);
+  --about-accent: #9bb8ff;
+  --about-glow: #8c7bff;
+  min-height: 100vh;
+  overflow: hidden;
+  background: var(--about-bg);
+  color: var(--about-text);
+  font-family: "Vazirmatn", "Iranian Sans.ttf", Tahoma, sans-serif;
+}
+
+.aboutPage * {
+  box-sizing: border-box;
+}
+
+.aboutPage a {
+  color: inherit;
+}
+
+.aboutHero {
+  min-height: min(790px, 94svh);
+  position: relative;
+  display: flex;
+  align-items: center;
+  isolation: isolate;
+  overflow: hidden;
+  border-bottom: 1px solid var(--about-line);
+  background:
+    radial-gradient(ellipse at 76% 30%, rgba(96, 113, 202, 0.15), transparent 32%),
+    radial-gradient(ellipse at 12% 90%, rgba(95, 66, 160, 0.12), transparent 34%),
+    linear-gradient(130deg, #070a10 10%, #0a0e18 62%, #0b1020);
+}
+
+.aboutHero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  opacity: 0.23;
+  background-image: linear-gradient(rgba(255,255,255,.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,.025) 1px, transparent 1px);
+  background-size: 72px 72px;
+  mask-image: linear-gradient(to left, black, transparent 85%);
+}
+
+.aboutHero__glow {
+  position: absolute;
+  z-index: -1;
+  width: min(42vw, 560px);
+  aspect-ratio: 1;
+  border-radius: 50%;
+  left: 9%;
+  top: 10%;
+  border: 1px solid rgba(174, 190, 255, 0.12);
+  box-shadow: 0 0 100px rgba(116, 129, 255, 0.07), inset 0 0 100px rgba(116, 129, 255, 0.035);
+}
+
+.aboutHero__glow::before,
+.aboutHero__glow::after {
+  content: "";
+  position: absolute;
+  inset: 11%;
+  border: 1px solid rgba(174, 190, 255, 0.08);
+  border-radius: 50%;
+}
+
+.aboutHero__glow::after {
+  inset: 23%;
+}
+
+.aboutHero__content {
+  width: min(1080px, calc(100% - 48px));
+  margin: 0 auto;
+  padding: 118px 0 100px;
+  position: relative;
+  z-index: 1;
+}
+
+.aboutEyebrow,
+.aboutSection__label,
+.aboutKicker {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--about-accent);
+  font-size: 12px;
+  letter-spacing: 0.04em;
+}
+
+.aboutEyebrow__dot {
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--about-accent);
+  box-shadow: 0 0 14px rgba(155, 184, 255, 0.75);
+}
+
+.aboutHero__title {
+  margin: 30px 0 22px;
+  color: var(--about-text);
+  font-size: clamp(42px, 7vw, 88px);
+  line-height: 1.35;
+  letter-spacing: -0.045em;
+  font-weight: 500;
+}
+
+.aboutHero__title span,
+.aboutStory h2 span,
+.aboutManifesto h2 span,
+.aboutJourney h2 span,
+.aboutPeople h2 span,
+.aboutClosing h2 span {
+  color: var(--about-accent);
+}
+
+.aboutHero__lead {
+  max-width: 540px;
+  color: var(--about-muted);
+  font-size: clamp(15px, 1.6vw, 18px);
+  line-height: 2.1;
+}
+
+.aboutTextLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  margin-top: 34px;
+  padding-bottom: 9px;
+  border-bottom: 1px solid rgba(155, 184, 255, 0.45);
+  color: var(--about-text);
+  text-decoration: none;
+  font-size: 14px;
+  transition: gap 180ms ease, color 180ms ease;
+}
+
+.aboutTextLink:hover {
+  gap: 20px;
+  color: var(--about-accent);
+}
+
+.aboutHero__index {
+  position: absolute;
+  left: max(24px, calc((100vw - 1080px) / 2));
+  bottom: 35px;
+  display: flex;
+  gap: 18px;
+  color: rgba(226, 233, 247, 0.36);
+  font-size: 9px;
+  letter-spacing: 0.18em;
+}
+
+.aboutHero__line {
+  position: absolute;
+  right: max(24px, calc((100vw - 1080px) / 2));
+  bottom: 0;
+  width: 1px;
+  height: 92px;
+  background: linear-gradient(transparent, var(--about-accent));
+  opacity: 0.7;
+}
+
+.aboutSection,
+.aboutManifesto,
+.aboutPeople {
+  width: min(1080px, calc(100% - 48px));
+  margin-inline: auto;
+}
+
+.aboutSection {
+  padding-block: clamp(76px, 10vw, 132px);
+}
+
+.aboutSection__label {
+  min-width: 135px;
+  color: rgba(226, 233, 247, 0.55);
+  font-size: 12px;
+}
+
+.aboutSection__label span:first-child {
+  color: var(--about-accent);
+  font-variant-numeric: tabular-nums;
+}
+
+.aboutStory__body {
+  display: grid;
+  grid-template-columns: 1fr 0.86fr;
+  gap: clamp(32px, 7vw, 100px);
+  margin-top: 42px;
+  align-items: start;
+}
+
+.aboutStory h2,
+.aboutManifesto h2,
+.aboutJourney h2,
+.aboutPeople h2,
+.aboutClosing h2 {
+  margin: 0;
+  color: var(--about-text);
+  font-size: clamp(30px, 4vw, 48px);
+  line-height: 1.6;
+  letter-spacing: -0.035em;
+  font-weight: 500;
+}
+
+.aboutStory__copy {
+  padding-top: 7px;
+}
+
+.aboutStory__copy p,
+.aboutManifesto__heading > p,
+.aboutJourney__content > div:first-child > p,
+.aboutPeople__content > div:first-child > p,
+.aboutClosing > p {
+  color: var(--about-muted);
+  font-size: 15px;
+  line-height: 2.15;
+}
+
+.aboutStory__copy p + p {
+  margin-top: 18px;
+}
+
+.aboutManifesto {
+  padding-block: clamp(70px, 9vw, 112px);
+  border-top: 1px solid var(--about-line);
+  border-bottom: 1px solid var(--about-line);
+}
+
+.aboutManifesto__heading {
+  display: grid;
+  grid-template-columns: 0.8fr 1.2fr;
+  column-gap: 32px;
+  align-items: start;
+}
+
+.aboutManifesto__heading .aboutSection__label {
+  grid-column: 1 / -1;
+  margin-bottom: 38px;
+}
+
+.aboutManifesto__heading h2 {
+  grid-column: 2;
+  grid-row: 2 / span 2;
+}
+
+.aboutManifesto__heading > p {
+  grid-column: 1;
+  grid-row: 2;
+  max-width: 330px;
+  margin-top: 12px;
+}
+
+.aboutPrinciples {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 24px;
+  margin-top: 68px;
+}
+
+.aboutPrinciple {
+  padding-top: 20px;
+  border-top: 1px solid var(--about-line);
+}
+
+.aboutPrinciple__number {
+  color: var(--about-accent);
+  font-size: 11px;
+  letter-spacing: 0.12em;
+}
+
+.aboutPrinciple h3 {
+  margin: 24px 0 12px;
+  font-size: 18px;
+  font-weight: 500;
+  color: var(--about-text);
+}
+
+.aboutPrinciple p {
+  color: var(--about-muted);
+  font-size: 13px;
+  line-height: 2.1;
+}
+
+.aboutJourney {
+  display: grid;
+  grid-template-columns: 0.36fr 1fr;
+  gap: 30px;
+}
+
+.aboutJourney__content {
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+  gap: 42px;
+}
+
+.aboutKicker {
+  margin-bottom: 17px;
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.aboutJourney__content > div:first-child > p {
+  max-width: 500px;
+  margin-top: 16px;
+}
+
+.aboutJourney__links {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 12px;
+  flex-shrink: 0;
+}
+
+.aboutButton {
+  min-height: 46px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  padding: 12px 17px;
+  border: 1px solid var(--about-line);
+  border-radius: 2px;
+  color: var(--about-text);
+  text-decoration: none;
+  font-size: 12px;
+  white-space: nowrap;
+  transition: border-color 180ms ease, background 180ms ease, transform 180ms ease;
+}
+
+.aboutButton:hover {
+  border-color: rgba(155, 184, 255, 0.55);
+  transform: translateY(-2px);
+}
+
+.aboutButton--primary {
+  border-color: rgba(155, 184, 255, 0.45);
+  background: rgba(155, 184, 255, 0.09);
+}
+
+.aboutPeople {
+  padding-block: 50px 110px;
+  border-top: 1px solid var(--about-line);
+}
+
+.aboutPeople__content {
+  display: grid;
+  grid-template-columns: 1fr 0.8fr;
+  gap: clamp(32px, 7vw, 100px);
+  margin-top: 38px;
+  align-items: center;
+}
+
+.aboutPeople__content > div:first-child > p {
+  max-width: 500px;
+  margin-top: 14px;
+}
+
+.aboutPeople__note {
+  display: flex;
+  gap: 18px;
+  align-items: flex-start;
+  padding: 22px;
+  border: 1px solid var(--about-line);
+  background: linear-gradient(135deg, rgba(155, 184, 255, 0.055), rgba(255,255,255,0.012));
+}
+
+.aboutPeople__mark {
+  flex: 0 0 42px;
+  width: 42px;
+  height: 42px;
+  display: grid;
+  place-items: center;
+  border: 1px solid rgba(155, 184, 255, 0.35);
+  border-radius: 50%;
+  color: var(--about-accent);
+  font-size: 22px;
+}
+
+.aboutPeople__note p {
+  color: var(--about-muted);
+  font-size: 13px;
+  line-height: 2;
+}
+
+.aboutClosing {
+  position: relative;
+  overflow: hidden;
+  padding: clamp(70px, 10vw, 126px) 24px;
+  text-align: center;
+  border-top: 1px solid var(--about-line);
+  background:
+    radial-gradient(ellipse at 50% 120%, rgba(120, 132, 255, 0.19), transparent 52%),
+    linear-gradient(180deg, #0a0e18, #080b13);
+}
+
+.aboutClosing h2 {
+  margin: 12px 0;
+  font-size: clamp(38px, 6vw, 68px);
+}
+
+.aboutClosing > p {
+  max-width: 460px;
+  margin: 0 auto;
+}
+
+.aboutButton--light {
+  margin-top: 28px;
+  border-color: rgba(155, 184, 255, 0.4);
+  background: rgba(155, 184, 255, 0.09);
+}
+
+@media (max-width: 760px) {
+  .aboutHero {
+    min-height: 690px;
+    min-height: 86svh;
+  }
+
+  .aboutHero__content {
+    width: calc(100% - 40px);
+    padding-block: 110px 90px;
+  }
+
+  .aboutHero__glow {
+    width: 82vw;
+    left: -24%;
+    top: 24%;
+  }
+
+  .aboutHero__title {
+    font-size: clamp(39px, 10vw, 64px);
+  }
+
+  .aboutHero__lead {
+    max-width: 440px;
+  }
+
+  .aboutHero__index {
+    left: 20px;
+    bottom: 24px;
+    font-size: 8px;
+  }
+
+  .aboutHero__line {
+    right: 20px;
+    height: 60px;
+  }
+
+  .aboutSection,
+  .aboutManifesto,
+  .aboutPeople {
+    width: calc(100% - 40px);
+  }
+
+  .aboutStory__body,
+  .aboutPeople__content {
+    grid-template-columns: 1fr;
+    gap: 24px;
+    margin-top: 28px;
+  }
+
+  .aboutManifesto__heading {
+    display: block;
+  }
+
+  .aboutManifesto__heading .aboutSection__label {
+    margin-bottom: 28px;
+  }
+
+  .aboutManifesto__heading > p {
+    margin-top: 16px;
+  }
+
+  .aboutPrinciples {
+    grid-template-columns: 1fr;
+    gap: 25px;
+    margin-top: 42px;
+  }
+
+  .aboutPrinciple {
+    padding-top: 17px;
+  }
+
+  .aboutPrinciple h3 {
+    margin-top: 14px;
+  }
+
+  .aboutJourney {
+    grid-template-columns: 1fr;
+    gap: 25px;
+  }
+
+  .aboutJourney__content {
+    display: block;
+  }
+
+  .aboutJourney__links {
+    margin-top: 28px;
+    align-items: stretch;
+  }
+
+  .aboutButton {
+    justify-content: space-between;
+  }
+
+  .aboutPeople {
+    padding-bottom: 78px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .aboutPage *,
+  .aboutPage *::before,
+  .aboutPage *::after {
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+  }
+}
