@@ -1,12 +1,10 @@
 import "../styles/members.css";
 
 const members = [
-  { id: "member-01", number: "۰۱", name: "نام عضو", role: "مسئولیت در گروه" },
-  { id: "member-02", number: "۰۲", name: "نام عضو", role: "مسئولیت در گروه" },
-  { id: "member-03", number: "۰۳", name: "نام عضو", role: "مسئولیت در گروه" },
-  { id: "member-04", number: "۰۴", name: "نام عضو", role: "مسئولیت در گروه" },
-  { id: "member-05", number: "۰۵", name: "نام عضو", role: "مسئولیت در گروه" },
-  { id: "member-06", number: "۰۶", name: "نام عضو", role: "مسئولیت در گروه" },
+  { id: "abbas-dehghan", number: "۰۱", name: "عباس دهقان", role: "کارگردان · بازیگر" },
+  { id: "edris-khaki-khizadeh", number: "۰۲", name: "ادریس خاکی‌زاده", role: "کارگردان · بازیگر" },
+  { id: "elnaz-mohammadizadeh", number: "۰۳", name: "الناز محمدی‌زاده", role: "طراح صحنه · بازیگر" },
+  { id: "hossein-khazaei", number: "۰۴", name: "حسین خزایی", role: "طراح صحنه · بازیگر" },
 ];
 
 export default function Members() {
@@ -28,7 +26,7 @@ export default function Members() {
             <span className="membersKicker">THE PEOPLE BEHIND THE STORIES</span>
             <h2 id="members-title">آدم‌های <span>ژو</span></h2>
           </div>
-          <p>نام‌ها، تصویرها و مسئولیت‌های اعضا را می‌توانی در کارت‌های زیر قرار بدهی؛ قالب برای عکس‌های پرتره طراحی شده است.</p>
+          <p>چهار هنرمند، چهار نگاه و یک مسیر مشترک؛ از کارگردانی و بازیگری تا طراحی صحنه.</p>
         </div>
         <div className="membersGrid">
           {members.map((member) => (
@@ -49,7 +47,7 @@ export default function Members() {
             </article>
           ))}
         </div>
-        <p className="membersNote">این کارت‌ها فعلاً جای‌نگهدار هستند؛ قبل از انتشار نهایی، نام، سمت و عکس واقعی هر عضو را جایگزین کن.</p>
+        <p className="membersNote">قاب‌های تصویر آماده‌اند؛ عکس پرتره هر عضو را بعداً می‌توانی در جایگاه مخصوص خودش اضافه کنی.</p>
       </section>
       <footer className="membersClosing">
         <span className="membersKicker">A COMPANY IS MORE THAN A STAGE</span>
