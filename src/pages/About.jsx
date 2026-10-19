@@ -30,7 +30,7 @@ function About() {
         <div className="aboutHero__content">
           <span className="aboutEyebrow">
             <span className="aboutEyebrow__dot" />
-            گروه تئاتر ژو
+            چشم‌انداز و تاریخچه · گروه تئاتر ژو
           </span>
 
           <h1 id="about-title" className="aboutHero__title">
@@ -63,9 +63,9 @@ function About() {
         </div>
         <div className="aboutStory__body">
           <h2>
-            ما هنوز در حال
+            داستان ژو،
             <br />
-            <span>ساختن این مسیر هستیم.</span>
+            <span>و افقی که دنبال می‌کنیم.</span>
           </h2>
           <div className="aboutStory__copy">
             <p>
