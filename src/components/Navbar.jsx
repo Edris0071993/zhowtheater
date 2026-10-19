@@ -42,6 +42,7 @@ function TheatreIcon({ isOpen }) {
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
+  const [aboutOpen, setAboutOpen] = useState(false);
 
   // بستن با ESC
   useEffect(() => {
@@ -60,7 +61,7 @@ export default function Navbar() {
     };
   }, [open]);
 
-  const close = () => setOpen(false);
+  const close = () => { setOpen(false); setAboutOpen(false); };
 
   return (
     <>
@@ -89,10 +90,29 @@ export default function Navbar() {
                 خانه
               </NavLink>
             </li>
-            <li>
-              <NavLink to="/about" onClick={close} className="navLink">
-                درباره ما
-              </NavLink>
+            <li className={`navAboutItem ${aboutOpen ? "expanded" : ""}`}>
+              <button
+                type="button"
+                className="navLink navAboutToggle"
+                aria-expanded={aboutOpen}
+                aria-controls="about-submenu"
+                onClick={() => setAboutOpen((value) => !value)}
+              >
+                <span>درباره ما</span>
+                <span className="navSubmenuChevron" aria-hidden="true">⌄</span>
+              </button>
+              <div id="about-submenu" className="navSubmenu" hidden={!aboutOpen}>
+                <NavLink to="/about" onClick={close} className="navSubLink">
+                  <span className="navSubLink__number">۰۱</span>
+                  <span><strong>چشم‌انداز و تاریخچه</strong><small>داستان و نگاه هنری ژو</small></span>
+                  <span className="navSubLink__arrow" aria-hidden="true">↗</span>
+                </NavLink>
+                <NavLink to="/members" onClick={close} className="navSubLink">
+                  <span className="navSubLink__number">۰۲</span>
+                  <span><strong>اعضای گروه</strong><small>آشنایی با آدم‌های ژو</small></span>
+                  <span className="navSubLink__arrow" aria-hidden="true">↗</span>
+                </NavLink>
+              </div>
             </li>
             <li>
               <NavLink to="/future-projects" onClick={close} className="navLink">
