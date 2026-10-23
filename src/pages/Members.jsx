@@ -24,9 +24,9 @@ export default function Members() {
         <div className="membersSectionHead">
           <div>
             <span className="membersKicker">THE PEOPLE BEHIND THE STORIES</span>
-            <h2 id="members-title">آدم‌های <span>ژو</span></h2>
+            <h2 id="members-title">اعضای گروه<span>ژو</span></h2>
           </div>
-          <p>چهار هنرمند، چهار نگاه و یک مسیر مشترک؛ از کارگردانی و بازیگری تا طراحی صحنه.</p>
+          <p> یک مسیر مشترک؛ از کارگردانی و بازیگری تا طراحی صحنه.</p>
         </div>
         <div className="membersGrid">
           {members.map((member) => (
