@@ -11,24 +11,15 @@ body {
 
 .App {
   min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
 main {
-  padding-bottom: 125px;
+  flex: 1;
 }
 
 .page-container {
   padding: 20px;
 }
 
-@media (max-width: 900px) {
-  main {
-    padding-bottom: 160px;
-  }
-}
-
-@media (max-width: 520px) {
-  main {
-    padding-bottom: 185px;
-  }
-}

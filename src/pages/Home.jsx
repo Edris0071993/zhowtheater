@@ -25,7 +25,6 @@ const heroSlides = slideOrder
 
 export default function Home() {
   const intro = useInView({ threshold: 0.18 });
-  const news = useInView({ threshold: 0.18 });
   const [activeSlide, setActiveSlide] = useState(0);
   const slides = heroSlides.length ? heroSlides : [{ name: "hero", src: heroImg }];
 
@@ -164,60 +163,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* بخش 3: تازه‌ها */}
-      <section
-        ref={news.ref}
-        className={`section news ${news.inView ? "is-visible" : ""}`}
-      >
-        <div className="section__head">
-          <h2 className="section__title">تازه‌ها</h2>
-          <p className="section__desc">
-            پروژه‌های جدید گروه‌های دیگر 
-          </p>
-        </div>
-
-        <div className="newsGrid">
-          <a className="newsCard" href="#" aria-label="پروژه ۱">
-            <div className="newsCard__circle">
-              <span className="newsCard__tag">پروژه ۱</span>
-            </div>
-            <div className="newsCard__txt">
-              <h3>نمایش A</h3>
-              <p>تهران • تابستان</p>
-            </div>
-          </a>
-
-          <a className="newsCard" href="#" aria-label="پروژه ۲">
-            <div className="newsCard__circle">
-              <span className="newsCard__tag">پروژه ۲</span>
-            </div>
-            <div className="newsCard__txt">
-              <h3>نمایش B</h3>
-              <p>اصفهان • اجراهای محدود</p>
-            </div>
-          </a>
-
-          <a className="newsCard" href="#" aria-label="پروژه ۳">
-            <div className="newsCard__circle">
-              <span className="newsCard__tag">پروژه ۳</span>
-            </div>
-            <div className="newsCard__txt">
-              <h3>نمایش C</h3>
-              <p>شیراز • به‌زودی</p>
-            </div>
-          </a>
-
-          <a className="newsCard" href="#" aria-label="پروژه ۴">
-            <div className="newsCard__circle">
-              <span className="newsCard__tag">پروژه ۴</span>
-            </div>
-            <div className="newsCard__txt">
-              <h3>نمایش D</h3>
-              <p>مشهد • پاییز</p>
-            </div>
-          </a>
-        </div>
-      </section>
     </div>
   );
 }
