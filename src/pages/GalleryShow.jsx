@@ -11,12 +11,12 @@ const allShowImages = import.meta.glob("../assets/images/shows/**/*", {
 });
 
 const showFolders = {
-  rapunzel: { title: "راپونزل", folder: "راپونزل", aliases: ["راپونزل", "rapunzel"] },
-  pirates: { title: "دزدان دریایی", folder: "دزدان", aliases: ["دزدان", "دزدان دریایی", "pirates", "dozdane-daryayi"] },
-  "dozdane-daryayi": { title: "دزدان دریایی", folder: "دزدان", aliases: ["دزدان", "دزدان دریایی", "pirates", "dozdane-daryayi"] },
-  "aroos-mordegan": { title: "عروس مردگان", folder: "عروس مردگان 2", aliases: ["عروس مردگان 2", "عروس مردگان", "aroos-mordegan"] },
-  aladdin: { title: "علاالدین", folder: "علاالدین", aliases: ["علاالدین", "علاءالدین", "aladdin"] },
-  kharamshahr: { title: "خرمشیر", folder: "خرمشیر", aliases: ["عکس خرمشیر", "خرمشیر", "خرامشیر", "kharamshahr", "kharamshir"] },
+  rapunzel: { title: "راپونزل", folder: "راپونزل", aliases: ["راپونزل", "rapunzel"], start: 4101, end: 4117 },
+  pirates: { title: "دزدان دریایی", folder: "دزدان", aliases: ["دزدان", "دزدان دریایی", "pirates", "dozdane-daryayi"], start: 7783, end: 7820 },
+  "dozdane-daryayi": { title: "دزدان دریایی", folder: "دزدان", aliases: ["دزدان", "دزدان دریایی", "pirates", "dozdane-daryayi"], start: 7783, end: 7820 },
+  "aroos-mordegan": { title: "عروس مردگان", folder: "عروس مردگان 2", aliases: ["عروس مردگان 2", "عروس مردگان", "aroos-mordegan"], start: 7007, end: 7030 },
+  aladdin: { title: "علاالدین", folder: "علاالدین", aliases: ["علاالدین", "علاءالدین", "aladdin"], start: 1652, end: 1679 },
+  kharamshahr: { title: "خرمشیر", folder: "عکس خرمشیر", aliases: ["عکس خرمشیر", "خرمشیر", "خرامشیر", "kharamshahr", "kharamshir"], start: 5368, end: 5404 },
 };
 
 function normalize(value) {
@@ -34,9 +34,17 @@ export default function GalleryShow() {
       .filter(([path]) => {
         const parts = path.split("/");
         const folder = normalize(parts[parts.length - 2] || "");
-        return aliases.includes(folder);
+        const fileName = parts[parts.length - 1].replace(/\.[^.]+$/, "");
+        const match = fileName.match(/^IMG-(\d+)$/i);
+        if (!aliases.includes(folder) || !match) return false;
+        const number = Number(match[1]);
+        return number >= show.start && number <= show.end;
       })
-      .sort(([a], [b]) => a.localeCompare(b, "fa"))
+      .sort(([a], [b]) => {
+        const numberA = Number(a.split("/").pop().replace(/\.[^.]+$/, "").match(/\d+$/)?.[0] || 0);
+        const numberB = Number(b.split("/").pop().replace(/\.[^.]+$/, "").match(/\d+$/)?.[0] || 0);
+        return numberA - numberB;
+      })
       .map(([path, src], index) => ({
         src,
         name: path.split("/").pop().replace(/\.[^.]+$/, ""),
