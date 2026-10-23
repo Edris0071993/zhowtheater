@@ -8,6 +8,7 @@ import imgAroos from "../assets/images/shows/aroos-mordegan.png";
 import imgRapunzel from "../assets/images/shows/rapunzel.png";
 import imgPirates from "../assets/images/shows/dozdane-daryayi.jpeg";
 import imgAladdin from "../assets/images/shows/aladdin.png";
+import imgKharamshahr from "../assets/images/home/hero.png";
 
 function wrapIndex(i, len) {
   return ((i % len) + len) % len;
@@ -21,7 +22,8 @@ export default function Gallery() {
       { id: "aroos-mordegan", title: "عروس مردگان", image: imgAroos },
       { id: "rapunzel", title: "راپونزل", image: imgRapunzel },
       { id: "dozdane-daryayi", title: "دزدان دریایی", image: imgPirates },
-      { id: "aladdin", title: "علاءالدین", image: imgAladdin },
+      { id: "aladdin", title: "علاالدین", image: imgAladdin },
+      { id: "kharamshahr", title: "خرمشیر", image: imgKharamshahr },
     ],
     []
   );
@@ -52,7 +54,7 @@ export default function Gallery() {
         <header className="galleryHead">
           <h1 className="galleryTitle">گالری اجراها</h1>
           <p className="gallerySub">
-            با فلش‌ها جابه‌جا کن؛ روی عکس کلیک کن تا وارد صفحه نمایش بشی.
+            یک نمایش را انتخاب کن و وارد آرشیو تصاویر آن شو.
           </p>
         </header>
 
