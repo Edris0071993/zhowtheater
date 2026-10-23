@@ -1,22 +1,64 @@
 import "../styles/home.css";
 import useInView from "../hooks/useInView";
-import { useMemo, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 
-// این مسیرها را مطابق اسم فایل‌هایی که می‌گذاری تنظیم کن:
+// تصاویر اسلاید از پوشه‌ی slide خوانده می‌شوند؛ پسوند فایل‌ها مهم نیست.
 import heroImg from "../assets/images/home/hero.png";
 import playImg from "../assets/images/home/lonesome-west.png";
+
+const slideFiles = import.meta.glob("../assets/images/home/slide/*", {
+  eager: true,
+  query: "?url",
+  import: "default",
+});
+
+const slideOrder = ["kharamshir", "rapunzel", "aladin", "arus", "dozdan", "hero"];
+const heroSlides = slideOrder
+  .map((name) => {
+    const entry = Object.entries(slideFiles).find(([path]) => {
+      const fileName = path.split("/").pop().split(".").slice(0, -1).join(".").trim().toLowerCase();
+      return fileName === name;
+    });
+    return entry ? { name, src: entry[1] } : null;
+  })
+  .filter(Boolean);
 
 export default function Home() {
   const intro = useInView({ threshold: 0.18 });
   const news = useInView({ threshold: 0.18 });
+  const [activeSlide, setActiveSlide] = useState(0);
+  const slides = heroSlides.length ? heroSlides : [{ name: "hero", src: heroImg }];
+
+  useEffect(() => {
+    if (slides.length < 2) return undefined;
+    const timer = window.setInterval(() => {
+      setActiveSlide((current) => (current + 1) % slides.length);
+    }, 10000);
+    return () => window.clearInterval(timer);
+  }, [slides.length]);
+
+  const showSlide = (index) => {
+    setActiveSlide((index + slides.length) % slides.length);
+  };
 
   return (
     <div className="home">
-      {/* بخش 1: عکس تمام صفحه */}
-      <header className="hero">
-        <img className="hero__img" src={heroImg} alt="تصویر اصلی تئاتر" />
+      {/* بخش 1: اسلایدشو اصلی */}
+      <header className="hero" aria-label="تصاویر نمایش‌های گروه ژو">
+        <div className="hero__slides" aria-live="off">
+          {slides.map((slide, index) => (
+            <img
+              key={slide.name}
+              className={`hero__slide ${index === activeSlide ? "is-active" : ""}`}
+              src={slide.src}
+              alt={`تصویر ${slide.name}`}
+              fetchPriority={index === 0 ? "high" : "auto"}
+              loading={index === 0 ? "eager" : "lazy"}
+            />
+          ))}
+        </div>
 
-        {/* لایه برای خوانایی متن روی عکس */}
+        {/* لایه‌ی تیره و گرادیانی برای خوانایی متن روی عکس */}
         <div className="hero__overlay" />
 
         <div className="hero__content">
@@ -29,6 +71,42 @@ export default function Home() {
             معرفی نمایشنامه
           </a>
         </div>
+
+        {slides.length > 1 && (
+          <div className="hero__controls" aria-label="کنترل اسلایدها">
+            <button
+              className="hero__arrow hero__arrow--prev"
+              type="button"
+              onClick={() => showSlide(activeSlide - 1)}
+              aria-label="تصویر قبلی"
+            >
+              ‹
+            </button>
+            <div className="hero__dots" role="group" aria-label="انتخاب تصویر">
+              {slides.map((slide, index) => (
+                <button
+                  key={slide.name}
+                  type="button"
+                  className={`hero__dot ${index === activeSlide ? "is-active" : ""}`}
+                  onClick={() => showSlide(index)}
+                  aria-label={`رفتن به تصویر شماره ${index + 1}`}
+                  aria-pressed={index === activeSlide}
+                />
+              ))}
+            </div>
+            <button
+              className="hero__arrow hero__arrow--next"
+              type="button"
+              onClick={() => showSlide(activeSlide + 1)}
+              aria-label="تصویر بعدی"
+            >
+              ›
+            </button>
+          </div>
+        )}
+        <span className="hero__counter" aria-hidden="true">
+          {String(activeSlide + 1).padStart(2, "0")} <span>/</span> {String(slides.length).padStart(2, "0")}
+        </span>
       </header>
 
       {/* بخش 2: معرفی نمایشنامه */}
