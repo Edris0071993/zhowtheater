@@ -61,7 +61,7 @@ export default function Home() {
         <div className="hero__overlay" />
 
         <div className="hero__content">
-          <h1 className="hero__title">موسسه کران هنر مانا</h1>
+          <h1 className="hero__title">گروه هنری ژو</h1>
           <p className="hero__subtitle">
             روایت، صحنه، نور — یک تجربه‌ی مینیمال و مدرن
           </p>
