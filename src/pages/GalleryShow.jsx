@@ -13,9 +13,10 @@ const allShowImages = import.meta.glob("../assets/images/shows/**/*", {
 const showFolders = {
   rapunzel: { title: "راپونزل", folder: "راپونزل", aliases: ["راپونزل", "rapunzel"] },
   pirates: { title: "دزدان دریایی", folder: "دزدان", aliases: ["دزدان", "دزدان دریایی", "pirates", "dozdane-daryayi"] },
+  "dozdane-daryayi": { title: "دزدان دریایی", folder: "دزدان", aliases: ["دزدان", "دزدان دریایی", "pirates", "dozdane-daryayi"] },
   "aroos-mordegan": { title: "عروس مردگان", folder: "عروس مردگان 2", aliases: ["عروس مردگان 2", "عروس مردگان", "aroos-mordegan"] },
   aladdin: { title: "علاالدین", folder: "علاالدین", aliases: ["علاالدین", "علاءالدین", "aladdin"] },
-  kharamshahr: { title: "خرمشیر", folder: "خرمشیر", aliases: ["خرمشیر", "خرامشیر", "kharamshahr", "kharamshir"] },
+  kharamshahr: { title: "خرمشیر", folder: "خرمشیر", aliases: ["عکس خرمشیر", "خرمشیر", "خرامشیر", "kharamshahr", "kharamshir"] },
 };
 
 function normalize(value) {
