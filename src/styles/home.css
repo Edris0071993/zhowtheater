@@ -327,3 +327,224 @@ html {
     grid-template-columns: 1fr;
   }
 }
+
+/* ---------------------------
+  HERO SLIDESHOW — editorial theatre look
+--------------------------- */
+.hero {
+  isolation: isolate;
+  background: #080a10;
+}
+
+.hero__slides {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  background: #080a10;
+}
+
+.hero__slide {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+  object-position: center;
+  opacity: 0;
+  transform: scale(1.035);
+  transition: opacity 1250ms cubic-bezier(0.22, 1, 0.36, 1),
+    transform 9000ms ease-out;
+  will-change: opacity, transform;
+}
+
+.hero__slide.is-active {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.hero__overlay {
+  z-index: 1;
+  background:
+    linear-gradient(90deg, rgba(4, 6, 12, 0.12) 0%, rgba(4, 6, 12, 0.28) 42%, rgba(4, 6, 12, 0.72) 100%),
+    linear-gradient(0deg, rgba(4, 6, 12, 0.48) 0%, transparent 45%, rgba(4, 6, 12, 0.18) 100%);
+}
+
+.hero__content {
+  z-index: 2;
+}
+
+.hero__title {
+  max-width: 780px;
+  line-height: 1.35;
+  letter-spacing: -0.035em;
+  text-wrap: balance;
+}
+
+.hero__subtitle {
+  text-shadow: 0 2px 18px rgba(0, 0, 0, 0.45);
+}
+
+.hero__controls {
+  position: absolute;
+  z-index: 4;
+  right: max(24px, calc((100vw - 1100px) / 2));
+  bottom: clamp(108px, 13vh, 150px);
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 9px 12px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 999px;
+  background: rgba(12, 14, 21, 0.35);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+}
+
+.hero__dots {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+
+.hero__dot {
+  position: relative;
+  width: 7px;
+  height: 7px;
+  padding: 0;
+  border: 0;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.48);
+  cursor: pointer;
+  transition: width 350ms ease, background 350ms ease, transform 350ms ease;
+}
+
+.hero__dot:hover {
+  background: rgba(255, 255, 255, 0.8);
+  transform: scale(1.12);
+}
+
+.hero__dot.is-active {
+  width: 28px;
+  background: #fff;
+}
+
+.hero__arrow {
+  display: grid;
+  place-items: center;
+  width: 28px;
+  height: 28px;
+  padding: 0;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  color: #fff;
+  background: rgba(255, 255, 255, 0.07);
+  font: inherit;
+  font-size: 22px;
+  line-height: 1;
+  cursor: pointer;
+  transition: background 220ms ease, border-color 220ms ease, transform 220ms ease;
+}
+
+.hero__arrow:hover {
+  background: rgba(255, 255, 255, 0.18);
+  border-color: rgba(255, 255, 255, 0.5);
+  transform: scale(1.05);
+}
+
+.hero__counter {
+  position: absolute;
+  z-index: 3;
+  left: max(24px, calc((100vw - 1100px) / 2));
+  bottom: clamp(116px, 13.5vh, 158px);
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 12px;
+  letter-spacing: 0.14em;
+  direction: ltr;
+  font-variant-numeric: tabular-nums;
+  text-shadow: 0 2px 14px rgba(0, 0, 0, 0.45);
+}
+
+.hero__counter span {
+  margin: 0 5px;
+  color: rgba(255, 255, 255, 0.45);
+}
+
+@media (max-width: 900px) {
+  .hero__controls {
+    right: 20px;
+    bottom: 170px;
+  }
+
+  .hero__counter {
+    left: 20px;
+    bottom: 178px;
+  }
+
+  .hero__overlay {
+    background:
+      linear-gradient(0deg, rgba(4, 6, 12, 0.66) 0%, rgba(4, 6, 12, 0.18) 65%, rgba(4, 6, 12, 0.2) 100%),
+      linear-gradient(90deg, rgba(4, 6, 12, 0.12), rgba(4, 6, 12, 0.3));
+  }
+}
+
+@media (max-width: 520px) {
+  .hero {
+    min-height: 88svh;
+  }
+
+  .hero__content {
+    min-height: 88svh;
+    align-content: end;
+    padding: 80px 0 235px;
+  }
+
+  .hero__title {
+    font-size: clamp(30px, 9vw, 42px);
+    margin: 0 0 10px;
+  }
+
+  .hero__controls {
+    right: 16px;
+    bottom: 190px;
+    gap: 9px;
+    padding: 7px 9px;
+  }
+
+  .hero__dots {
+    gap: 6px;
+  }
+
+  .hero__dot {
+    width: 6px;
+    height: 6px;
+  }
+
+  .hero__dot.is-active {
+    width: 22px;
+  }
+
+  .hero__arrow {
+    width: 25px;
+    height: 25px;
+    font-size: 20px;
+  }
+
+  .hero__counter {
+    left: 16px;
+    bottom: 198px;
+    font-size: 11px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero__slide,
+  .hero__dot,
+  .hero__arrow {
+    transition: none;
+  }
+
+  .hero__slide.is-active {
+    transform: none;
+  }
+}
