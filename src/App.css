@@ -13,6 +13,22 @@ body {
   min-height: 100vh;
 }
 
+main {
+  padding-bottom: 125px;
+}
+
 .page-container {
   padding: 20px;
+}
+
+@media (max-width: 900px) {
+  main {
+    padding-bottom: 160px;
+  }
+}
+
+@media (max-width: 520px) {
+  main {
+    padding-bottom: 185px;
+  }
 }
