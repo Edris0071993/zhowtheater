@@ -6,6 +6,7 @@ import About from './pages/About';
 import Members from './pages/Members';
 import FutureProjects from './pages/FutureProjects';
 import Gallery from './pages/Gallery';
+import GalleryShow from './pages/GalleryShow';
 import './App.css';
 
 function App() {
@@ -20,6 +21,7 @@ function App() {
             <Route path="/members" element={<Members />} />
             <Route path="/future-projects" element={<FutureProjects />} />
             <Route path="/gallery" element={<Gallery />} />
+            <Route path="/gallery/:showId" element={<GalleryShow />} />
           </Routes>
         </main>
         <Footer />
