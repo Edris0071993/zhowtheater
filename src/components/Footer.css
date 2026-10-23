@@ -1,9 +1,6 @@
 .contact-footer {
-  position: fixed;
-  z-index: 1000;
-  right: 16px;
-  bottom: 14px;
-  left: 16px;
+  position: static;
+  width: 100%;
   display: grid;
   grid-template-columns: auto auto auto minmax(220px, 1fr);
   align-items: center;
@@ -12,8 +9,8 @@
   color: #f8f7fb;
   background: rgba(20, 19, 27, 0.96);
   border: 1px solid rgba(170, 59, 255, 0.35);
-  border-radius: 16px;
-  box-shadow: 0 10px 35px rgba(0, 0, 0, 0.2);
+  border-radius: 0;
+  box-shadow: 0 -8px 28px rgba(0, 0, 0, 0.12);
   backdrop-filter: blur(14px);
   direction: rtl;
 }
@@ -76,12 +73,9 @@ a.contact-footer__item:hover {
 
 @media (max-width: 520px) {
   .contact-footer {
-    right: 8px;
-    bottom: 8px;
-    left: 8px;
     gap: 10px;
     padding: 11px 12px;
-    border-radius: 13px;
+    border-radius: 0;
   }
 
   .contact-footer__brand strong {
