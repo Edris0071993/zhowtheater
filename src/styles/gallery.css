@@ -1,300 +1,294 @@
 :root {
-   --g-bg: #06070c;
-  --g-fg: rgba(245, 248, 255, 0.92);
-  --g-muted: rgba(245, 248, 255, 0.68);
-
-  /* مهتابی/نقره‌ای */
-  --moon-1: #d2deff;   /* روشن */
-  --moon-2: #9aa6c7;   /* میانه */
-  --moon-3: #f7f9ff;   /* هایلایت */
-
-  --line: rgba(255, 255, 255, 0.14);
-  --glass: rgba(255, 255, 255, 0.06);
-
-  --accent: #9db7ff;
+  --g-bg: #09090b;
+  --g-fg: #f4f0eb;
+  --g-muted: #aaa39d;
+  --g-accent: #c9a77c;
+  --g-line: rgba(244, 240, 235, .17);
 }
 
 .galleryPage {
+  position: relative;
+  isolation: isolate;
   min-height: 100svh;
-  background: radial-gradient(900px 500px at 70% 10%, rgba(122, 167, 255, 0.12), transparent 55%),
-    radial-gradient(700px 450px at 20% 70%, rgba(140, 255, 225, 0.08), transparent 55%),
-    var(--g-bg);
+  overflow: hidden;
+  padding: clamp(92px, 10vw, 132px) 0 70px;
   color: var(--g-fg);
-  padding: 72px 0 52px;
+  background:
+    radial-gradient(ellipse at 12% 8%, rgba(139, 101, 66, .12), transparent 38%),
+    radial-gradient(ellipse at 88% 70%, rgba(94, 75, 103, .10), transparent 34%),
+    var(--g-bg);
+  direction: rtl;
 }
 
+.galleryPage > *:not(.space-background) { position: relative; }
 .galleryWrap {
-  width: min(1100px, calc(100% - 32px));
+  width: min(1280px, calc(100% - 64px));
   margin: 0 auto;
 }
 
-.galleryHead {
-  text-align: right;
-  margin-bottom: 26px;
+.galleryMasthead {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 32px;
+  padding-bottom: clamp(36px, 6vw, 72px);
 }
-
-.galleryTitle {
-  margin: 0 0 10px;
-  font-size: clamp(26px, 3.4vw, 44px);
-  letter-spacing: -0.6px;
-}
-
-.gallerySub {
-  margin: 0;
-  color: var(--g-muted);
-  line-height: 1.9;
-}
-
-/* Stage */
-.moonStage {
-  display: grid;
-  grid-template-columns: 64px 1fr 64px;
+.galleryIntro { max-width: 760px; }
+.galleryEyebrow {
+  display: inline-flex;
   align-items: center;
-  gap: 18px;
+  gap: 11px;
+  margin-bottom: 25px;
+  color: var(--g-accent);
+  font: 10px/1.4 Arial, sans-serif;
+  letter-spacing: .19em;
+  direction: ltr;
 }
-
-/* Arrows */
-.navArrow {
-  height: 56px;
-  width: 56px;
-  border-radius: 999px;
-  border: 1px solid var(--line);
-  background: var(--glass);
+.galleryEyebrow i {
+  display: inline-block;
+  width: 28px;
+  height: 1px;
+  background: var(--g-accent);
+}
+.galleryTitle {
+  margin: 0;
+  font-size: clamp(48px, 7.8vw, 104px);
+  font-weight: 500;
+  letter-spacing: -.055em;
+  line-height: 1.13;
+}
+.galleryTitle em {
+  color: var(--g-accent);
+  font-style: normal;
+}
+.gallerySub {
+  max-width: 480px;
+  margin: 22px 0 0;
+  color: var(--g-muted);
+  font-size: clamp(13px, 1.25vw, 15px);
+  line-height: 2.1;
+}
+.galleryCount {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  padding-bottom: 8px;
+  color: var(--g-muted);
+  direction: ltr;
+}
+.galleryCount strong {
   color: var(--g-fg);
-
-  cursor: pointer;
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-
+  font: 300 clamp(44px, 6vw, 72px)/1 Georgia, serif;
+}
+.galleryCount span {
+  font: 9px/1.65 Arial, sans-serif;
+  letter-spacing: .13em;
+}
+.gallerySectionLine {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 0;
+  margin-bottom: 18px;
+  border-top: 1px solid var(--g-line);
+  color: var(--g-muted);
+  font-size: 12px;
+}
+.gallerySectionLine span:last-child {
+  font: 10px Arial, sans-serif;
+  letter-spacing: .16em;
+  direction: ltr;
+}
+.galleryEditorialGrid {
   display: grid;
-  place-items: center;
-  transition: transform 200ms ease, background 200ms ease, border-color 200ms ease;
+  grid-template-columns: minmax(0, 1.12fr) minmax(0, .88fr);
+  gap: 16px;
+  direction: ltr;
 }
-
-.navArrow:hover {
-  transform: translateY(-1px);
-  background: rgba(255, 255, 255, 0.09);
-  border-color: rgba(255, 255, 255, 0.28);
-}
-
-.navArrow:active {
-  transform: translateY(0) scale(0.98);
-}
-
-.arrowIcon {
-  font-size: 26px;
-  line-height: 1;
-}
-
-/* Dock for 3D perspective */
-.moonDock {
-  display: grid;
-  place-items: center;
-  perspective: 900px;
-  perspective-origin: 50% 40%;
-  padding: 10px 0;
-}
-
-/* Moon itself */
-.moon {
-  --size: clamp(260px, 42vw, 420px);
-
-  width: var(--size);
-  aspect-ratio: 1 / 1;
-  border-radius: 999px;
+.galleryFeature, .galleryWorkCard {
   position: relative;
-
-  /* مهتابی + عمق */
-  background:
-    /* لکه نور مهتابی */
-    radial-gradient(140px 140px at 30% 26%, rgba(255,255,255,0.75), transparent 62%),
-    radial-gradient(240px 240px at 36% 36%, rgba(215,225,255,0.55), transparent 65%),
-    /* سایه سمت راست-پایین برای گردی */
-    radial-gradient(circle at 68% 62%, rgba(50, 60, 90, 0.35), transparent 58%),
-    /* بدنه ماه */
-    radial-gradient(circle at 30% 30%, var(--moon-3), var(--moon-1) 42%, var(--moon-2) 72%, #2a2f41 100%);
-
-  border: 1px solid rgba(255, 255, 255, 0.18);
-
-  /* درخشندگی (glow) + سایه طبیعی */
-  box-shadow:
-    rgba(140, 180, 255, 0.18) 0 0 70px 10px,     /* هاله مهتابی */
-    rgba(0, 0, 0, 0.55) 0 45px 90px -45px,       /* سایه بیرونی */
-    inset rgba(255, 255, 255, 0.25) 0 2px 14px,  /* نور داخلی */
-    inset rgba(0, 0, 0, 0.40) -18px -26px 38px;  /* عمق */
-
-  transform-style: preserve-3d;
-  transform: rotateY(var(--rotY)) rotateX(6deg);
-  transition: transform 520ms cubic-bezier(.2,.8,.2,1);
-
-  animation: floaty 4.4s ease-in-out infinite;
+  display: block;
+  min-width: 0;
+  overflow: hidden;
+  padding: 0;
+  border: 1px solid rgba(255,255,255,.11);
+  background: #171513;
+  color: #fff;
+  text-align: right;
+  cursor: pointer;
+  isolation: isolate;
 }
-
-/* حرکت شناور */
-@keyframes floaty {
-  0%, 100% { translate: 0 0; }
-  50% { translate: 0 -8px; }
+.galleryFeature {
+  min-height: 590px;
+  aspect-ratio: 4 / 5;
 }
-
-/* لکه‌های ماه */
-.moonCrater {
-  position: absolute;
-  border-radius: 999px;
-  background: radial-gradient(circle at 35% 35%, rgba(0,0,0,0.35), rgba(255,255,255,0.08));
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  filter: blur(0.2px);
-  opacity: 0.9;
-}
-
-.moonCrater.c1 { width: 64px; height: 64px; top: 18%; left: 22%; }
-.moonCrater.c2 { width: 42px; height: 42px; top: 62%; left: 28%; opacity: 0.75; }
-.moonCrater.c3 { width: 54px; height: 54px; top: 40%; right: 18%; opacity: 0.7; }
-.moonCrater.c4 { width: 28px; height: 28px; bottom: 18%; right: 28%; opacity: 0.65; }
-
-/* تصویر مرکزی نمایش */
-.showCore {
+.galleryFeature img, .galleryWorkCard img {
   position: absolute;
   inset: 0;
-  margin: auto;
-
-  width: clamp(120px, 22vw, 180px);
-  height: clamp(120px, 22vw, 180px);
-  border-radius: 999px;
-
-  border: 1px solid rgba(255, 255, 255, 0.18);
-  background: rgba(0, 0, 0, 0.20);
-  padding: 0;
-
-  display: grid;
-  place-items: center;
-  cursor: pointer;
-
-  transform: translateZ(48px);
-  box-shadow:
-    rgba(0, 0, 0, 0.55) 0 20px 40px -18px,
-    inset rgba(255,255,255,0.10) 0 2px 10px;
-
-  transition: transform 240ms ease, border-color 240ms ease, background 240ms ease;
-}
-
-.showCore:hover {
-  transform: translateZ(52px) scale(1.01);
-  border-color: rgba(122, 167, 255, 0.45);
-  background: rgba(255, 255, 255, 0.06);
-}
-
-.showCore img {
-  width: calc(100% - 10px);
-  height: calc(100% - 10px);
-  border-radius: 999px;
+  width: 100%;
+  height: 100%;
   object-fit: cover;
-  display: block;
+  transition: transform 700ms cubic-bezier(.2,.7,.2,1), filter 500ms ease;
 }
-
-/* عنوان نمایش زیر تصویر */
-.showTitle {
+.galleryFeature img { object-position: center; }
+.galleryImageShade, .galleryCardShade {
   position: absolute;
-  left: 50%;
-  bottom: 18px;
-  transform: translateX(-50%) translateZ(30px);
-
-  padding: 10px 14px;
-  border-radius: 999px;
-  border: 1px solid rgba(255, 255, 255, 0.14);
-  background: rgba(0, 0, 0, 0.26);
-
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-
-  font-size: 14px;
-  color: var(--g-fg);
-  white-space: nowrap;
+  inset: 0;
+  z-index: 1;
+  background: linear-gradient(180deg, rgba(0,0,0,.32), transparent 34%, rgba(0,0,0,.72));
 }
-
-/* dots */
-.dots {
-  margin-top: 18px;
+.galleryFeatureTop {
+  position: absolute;
+  z-index: 2;
+  top: 22px;
+  left: 24px;
+  right: 24px;
   display: flex;
-  gap: 10px;
-  justify-content: center;
+  justify-content: space-between;
+  color: rgba(255,255,255,.83);
+  font: 9px Arial, sans-serif;
+  letter-spacing: .14em;
+  direction: ltr;
+}
+.galleryFeatureBottom {
+  position: absolute;
+  z-index: 2;
+  right: 30px;
+  bottom: 30px;
+  left: 30px;
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 20px;
+}
+.galleryFeatureBottom > span:first-child,
+.galleryCardText { display: grid; gap: 7px; }
+.galleryFeatureBottom small, .galleryCardText small {
+  color: var(--g-accent);
+  font: 9px Arial, sans-serif;
+  letter-spacing: .17em;
+  direction: ltr;
+  text-align: right;
+}
+.galleryFeatureBottom strong {
+  font-size: clamp(30px, 4vw, 52px);
+  font-weight: 500;
+}
+.galleryOpenMark, .galleryCardArrow {
+  display: grid;
+  flex: 0 0 auto;
+  width: 42px;
+  height: 42px;
+  place-items: center;
+  border: 1px solid rgba(255,255,255,.5);
+  border-radius: 50%;
+  font: 20px Arial, sans-serif;
+  transition: color 250ms ease, background 250ms ease, transform 250ms ease;
+}
+.gallerySideGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-rows: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+  direction: rtl;
+}
+.galleryWorkCard { min-height: 250px; aspect-ratio: 1 / 1.08; }
+.galleryWorkCard img { filter: saturate(.86); }
+.galleryCardShade {
+  background: linear-gradient(180deg, rgba(0,0,0,.14), transparent 34%, rgba(0,0,0,.78));
+}
+.galleryCardNumber {
+  position: absolute;
+  z-index: 2;
+  top: 17px;
+  left: 17px;
+  color: rgba(255,255,255,.86);
+  font: 11px Arial, sans-serif;
+  letter-spacing: .1em;
+  direction: ltr;
+}
+.galleryCardText {
+  position: absolute;
+  z-index: 2;
+  right: 19px;
+  bottom: 19px;
+  left: 52px;
+}
+.galleryCardText strong {
+  font-size: clamp(17px, 1.8vw, 23px);
+  font-weight: 500;
+}
+.galleryCardArrow {
+  position: absolute;
+  z-index: 2;
+  left: 15px;
+  bottom: 15px;
+  width: 31px;
+  height: 31px;
+  font-size: 16px;
+}
+.galleryFeature:hover img, .galleryWorkCard:hover img {
+  transform: scale(1.045);
+  filter: saturate(1.05);
+}
+.galleryFeature:hover .galleryOpenMark,
+.galleryWorkCard:hover .galleryCardArrow {
+  color: #111;
+  background: var(--g-fg);
+  transform: rotate(45deg);
+}
+.galleryFeature:focus-visible, .galleryWorkCard:focus-visible {
+  outline: 2px solid var(--g-accent);
+  outline-offset: 4px;
+}
+.galleryFootnote {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  padding-top: 18px;
+  margin-top: 22px;
+  border-top: 1px solid var(--g-line);
+  color: var(--g-muted);
+  font-size: 11px;
+}
+.galleryFootnote span:last-child {
+  font: 9px Arial, sans-serif;
+  letter-spacing: .17em;
+  direction: ltr;
 }
 
-.dot {
-  width: 10px;
-  height: 10px;
-  border-radius: 999px;
-  border: 1px solid rgba(255,255,255,0.22);
-  background: rgba(255,255,255,0.08);
-  cursor: pointer;
+@media (max-width: 900px) {
+  .galleryWrap { width: min(100% - 40px, 760px); }
+  .galleryEditorialGrid { grid-template-columns: 1fr; }
+  .galleryFeature { min-height: 520px; aspect-ratio: 16 / 10; }
+  .gallerySideGrid { grid-template-rows: auto; }
+  .galleryWorkCard { min-height: 230px; }
 }
-
-.dot.active {
-  background: rgba(122, 167, 255, 0.75);
-  border-color: rgba(122, 167, 255, 0.95);
+@media (max-width: 560px) {
+  .galleryPage { padding-top: 82px; }
+  .galleryWrap { width: calc(100% - 28px); }
+  .galleryMasthead { align-items: start; padding-bottom: 34px; }
+  .galleryTitle { font-size: clamp(46px, 13vw, 68px); }
+  .gallerySub { max-width: 310px; margin-top: 14px; font-size: 12px; }
+  .galleryCount { gap: 7px; padding-top: 31px; }
+  .galleryCount strong { font-size: 42px; }
+  .galleryCount span { font-size: 7px; }
+  .galleryEyebrow { margin-bottom: 17px; font-size: 8px; }
+  .galleryFeature { min-height: 430px; aspect-ratio: 4 / 5; }
+  .galleryFeatureTop { top: 15px; left: 15px; right: 15px; font-size: 8px; }
+  .galleryFeatureBottom { right: 19px; bottom: 19px; left: 19px; }
+  .galleryFeatureBottom strong { font-size: 34px; }
+  .galleryOpenMark { width: 36px; height: 36px; }
+  .gallerySideGrid { gap: 9px; }
+  .galleryWorkCard { min-height: 190px; aspect-ratio: 3 / 4; }
+  .galleryCardText { right: 11px; bottom: 12px; left: 37px; gap: 5px; }
+  .galleryCardText strong { font-size: 16px; }
+  .galleryCardText small { font-size: 7px; }
+  .galleryCardNumber { top: 11px; left: 11px; font-size: 9px; }
+  .galleryCardArrow { left: 9px; bottom: 9px; width: 25px; height: 25px; font-size: 13px; }
+  .galleryFootnote { font-size: 10px; }
+  .galleryFootnote span:last-child { font-size: 7px; }
 }
-
-/* Responsive */
-@media (max-width: 700px) {
-  .moonStage {
-    grid-template-columns: 52px 1fr 52px;
-    gap: 12px;
-  }
-
-  .navArrow {
-    width: 48px;
-    height: 48px;
-  }
-
-  .arrowIcon {
-    font-size: 24px;
-  }
-}
-
-@media (max-width: 420px) {
-  .galleryPage {
-    padding: 64px 0 44px;
-  }
-
-  .moonStage {
-    grid-template-columns: 44px 1fr 44px;
-  }
-
-  .navArrow {
-    width: 42px;
-    height: 42px;
-  }
-}
-/* انیمیشن تعویض عکس/عنوان (بدون حرکت کره) */
-@keyframes popIn {
-  from {
-    opacity: 0;
-    transform: translateZ(48px) scale(0.96);
-    filter: blur(2px);
-  }
-  to {
-    opacity: 1;
-    transform: translateZ(48px) scale(1);
-    filter: blur(0);
-  }
-}
-
-@keyframes titleIn {
-  from {
-    opacity: 0;
-    transform: translateX(-50%) translateZ(30px) translateY(6px);
-    filter: blur(2px);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(-50%) translateZ(30px) translateY(0);
-    filter: blur(0);
-  }
-}
-
-.showCore {
-  animation: popIn 320ms ease;
-}
-
-.showTitle {
-  animation: titleIn 320ms ease;
+@media (prefers-reduced-motion: reduce) {
+  .galleryFeature img, .galleryWorkCard img, .galleryOpenMark, .galleryCardArrow { transition: none; }
 }
