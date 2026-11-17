@@ -33,7 +33,7 @@ export default function Gallery() {
         <header className="galleryMasthead">
           <div className="galleryIntro">
             <span className="galleryEyebrow">ZHO THEATRE <i /> PERFORMANCE ARCHIVE</span>
-            <h1 className="galleryTitle">هر اجرا،<br /><em>یک جهان.</em></h1>
+            <h1 className="galleryTitle">هر اجرا،<br /><em>یک جهان</em></h1>
             <p className="gallerySub">
               ردِ لحظه‌هایی که روی صحنه جان گرفتند؛ روایت تصویری اجراهای گروه تئاتر ژو.
             </p>
