@@ -1,10 +1,10 @@
 .showGalleryPage {
   min-height: 70vh;
   padding: clamp(28px, 5vw, 64px) 0 88px;
-  color: #f5f3f7;
+  color: #f4f0eb;
   background:
-    radial-gradient(ellipse at 85% 0%, rgba(151, 117, 206, 0.13), transparent 40%),
-    #101014;
+    radial-gradient(ellipse at 85% 0%, rgba(139, 101, 66, 0.12), transparent 40%),
+    #09090b;
   direction: rtl;
 }
 .showGalleryWrap {
@@ -15,7 +15,7 @@
   display: inline-flex;
   align-items: center;
   gap: 10px;
-  color: #bdb7c7;
+  color: #aaa39d;
   font-size: 13px;
   text-decoration: none;
   transition: color 180ms ease;
@@ -28,7 +28,7 @@
 .showGalleryEyebrow {
   display: inline-block;
   margin-bottom: 17px;
-  color: #bba4d8;
+  color: #c9a77c;
   font-size: 12px;
   letter-spacing: .04em;
 }
@@ -41,7 +41,7 @@
 }
 .showGalleryHeader p {
   margin: 16px 0 0;
-  color: #aaa5b2;
+  color: #aaa39d;
   font-size: 15px;
   line-height: 1.9;
 }
@@ -50,14 +50,14 @@
   align-items: center;
   gap: 14px;
   margin-top: 27px;
-  color: #9c95a6;
+  color: #aaa39d;
   font-size: 12px;
 }
 .showGalleryRule {
   display: inline-block;
   width: 48px;
   height: 2px;
-  background: #bba4d8;
+  background: #c9a77c;
 }
 .showGalleryGrid {
   display: grid;
@@ -90,7 +90,7 @@
 }
 .showGalleryCard:hover {
   transform: translateY(-3px);
-  border-color: rgba(187,164,216,.55);
+  border-color: rgba(201,167,124,.55);
 }
 .showGalleryCard:hover::after { opacity: 1; }
 .showGalleryCard img {
@@ -123,7 +123,7 @@
   color: #fff;
   border: 1px solid rgba(255,255,255,.35);
   border-radius: 50%;
-  background: rgba(16,16,20,.35);
+  background: rgba(9,9,11,.35);
   opacity: 0;
   transform: translateY(3px);
   transition: opacity 200ms ease, transform 200ms ease;
@@ -135,7 +135,7 @@
 }
 .showGalleryCard:focus-visible,
 .showGalleryClose:focus-visible {
-  outline: 2px solid #c6a9e8;
+  outline: 2px solid #c9a77c;
   outline-offset: 3px;
 }
 .showGalleryEmpty {
@@ -147,7 +147,7 @@
   border-radius: 10px;
   background: rgba(255,255,255,.025);
 }
-.showGalleryEmptyMark { color: #bba4d8; font-size: 25px; }
+.showGalleryEmptyMark { color: #c9a77c; font-size: 25px; }
 .showGalleryEmpty h2 {
   margin: 0;
   font-size: clamp(20px, 3vw, 27px);
@@ -156,17 +156,17 @@
 .showGalleryEmpty p {
   max-width: 610px;
   margin: 0;
-  color: #aaa5b2;
+  color: #aaa39d;
   font-size: 14px;
   line-height: 1.9;
 }
 .showGalleryFolder {
   margin-top: 7px;
   padding: 9px 12px;
-  color: #d9c9ea;
-  border: 1px solid rgba(187,164,216,.22);
+  color: #e5d2b8;
+  border: 1px solid rgba(201,167,124,.22);
   border-radius: 5px;
-  background: rgba(187,164,216,.04);
+  background: rgba(201,167,124,.04);
   font-family: ui-monospace, SFMono-Regular, Consolas, monospace;
   font-size: 12px;
   direction: ltr;
@@ -180,7 +180,7 @@
   display: grid;
   place-items: center;
   padding: 56px 22px 48px;
-  background: rgba(7,7,10,.94);
+  background: rgba(7,7,9,.94);
   backdrop-filter: blur(12px);
   animation: showGalleryFadeIn 180ms ease both;
   cursor: zoom-out;
@@ -216,7 +216,7 @@
   position: absolute;
   bottom: 18px;
   left: 50%;
-  color: #d3cbdc;
+  color: #d8cfc4;
   font-size: 12px;
   font-variant-numeric: tabular-nums;
   transform: translateX(-50%);
