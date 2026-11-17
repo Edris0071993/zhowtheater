@@ -3,11 +3,11 @@ import { useNavigate } from "react-router-dom";
 import "../styles/gallery.css";
 import SpaceBackground from "../components/SpaceBackground";
 
-import imgAroos from "../assets/images/shows/aroos-mordegan.png";
-import imgRapunzel from "../assets/images/shows/rapunzel.png";
-import imgPirates from "../assets/images/shows/dozdane-daryayi.jpeg";
-import imgAladdin from "../assets/images/shows/aladdin.png";
-import imgKharamshahr from "../assets/images/home/hero.png";
+import imgAroos from "../assets/images/shows/IMG_7021.jpg";
+import imgRapunzel from "../assets/images/shows/IMG_4105.jpg";
+import imgPirates from "../assets/images/shows/IMG_7783.jpg";
+import imgAladdin from "../assets/images/shows/IMG_1657.jpg";
+import imgKharamshahr from "../assets/images/shows/عکس خرمشیر/IMG_5404.jpg";
 
 export default function Gallery() {
   const navigate = useNavigate();
